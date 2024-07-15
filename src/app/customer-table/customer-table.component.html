@@ -1,0 +1,27 @@
+<section class="w-100  d-flex justify-content-center align-items-center text-center">
+    <div class="w-75">
+        <input [(ngModel)]="searchTerm" class="form-control m-3" type="text" placeholder="Customer Name" #customerName>
+        <input [(ngModel)]="searchAmount" class="form-control m-3" type="number" placeholder="Transaction Amount" #transactionAmount>
+    <button class="btn btn-info">Filter</button>
+    </div>
+</section>
+
+<section class="d-flex justify-content-center align-items-center">
+    <table class="table w-75 text-center">
+        <thead>
+          <tr>
+            <th>Customer Name</th>
+            <th>Transaction date</th>
+            <th>Total Transaction Amount </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of transactions|search:searchTerm |searchAmount:searchAmount">
+            <td>{{ customers[item.customer_id-1].name }}</td>
+            <td>{{ item.date}}</td>
+            <td>{{ item.amount}}</td>
+          </tr>
+        </tbody>
+      </table>
+</section>
+
